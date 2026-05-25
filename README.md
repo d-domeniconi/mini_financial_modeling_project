@@ -220,7 +220,7 @@ cd mini_financial_modeling_project
 Crie um ambiente virtual:
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 ```
 
 Ative o ambiente:
@@ -241,6 +241,12 @@ Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Teste:
+
+```bash
+python example.py
 ```
 
 ---
