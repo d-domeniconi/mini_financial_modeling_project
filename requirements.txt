@@ -1,0 +1,4 @@
+holidays==0.97
+matplotlib==3.10.6
+pandas==2.3.2
+seaborn==0.13.2
