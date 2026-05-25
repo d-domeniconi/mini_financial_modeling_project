@@ -1,0 +1,1 @@
+# capitalization_dynamics's module. This module contains functions related to the dynamics of capitalization in financial markets.
