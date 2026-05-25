@@ -59,8 +59,8 @@ f_t = (1+i_{CDI}) \times (1+s_{fixa})
 
 Onde:
 
-- \(i_{CDI}\): taxa CDI diária;
-- \(s_{fixa}\): spread fixo diário.
+- $\(i_{CDI}\)$: taxa CDI diária;
+- $\(s_{fixa}\)$: spread fixo diário.
 
 ---
 
