@@ -30,7 +30,7 @@ def fator_atualizacao(i_cdi, s_fixa, dia_util=True):
     else:
         return 1
     
-def saldo_devedor_atual(saldo_anterior, fator_atualizacao):
+def saldo_devedor_atual(saldo_anterior, fator):
     """
     Calcula o saldo devedor atualizado para o período atual.
 
@@ -42,7 +42,7 @@ def saldo_devedor_atual(saldo_anterior, fator_atualizacao):
     saldo_anterior : float
         Saldo devedor do período anterior.
 
-    fator_atualizacao : float
+    fator : float
         Fator de atualização aplicado ao saldo.
 
     Returns
@@ -50,7 +50,7 @@ def saldo_devedor_atual(saldo_anterior, fator_atualizacao):
     float
         Saldo devedor atualizado.
     """
-    return saldo_anterior * fator_atualizacao
+    return saldo_anterior * fator
 
 def juro_do_dia(saldo_atual, saldo_anterior):
     """
