@@ -1,9 +1,8 @@
 import holidays
 import pandas as pd
-import modules.dina as dina
+from modules import dina
 import matplotlib.pyplot as plt
 import seaborn as sns
-import matplotlib as mpl
 
 def gerar_calendario_financeiro(inicio: str, fim: str, estado: str = "SC") -> pd.DataFrame:
     """
