@@ -214,7 +214,7 @@ git clone https://github.com/d-domeniconi/mini_financial_modeling_project.git
 Entre no diretório:
 
 ```bash
-cd MINI_FINANCIAL_MODELING_PROJECT
+cd mini_financial_modeling_project
 ```
 
 Crie um ambiente virtual:
