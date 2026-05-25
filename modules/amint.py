@@ -272,3 +272,80 @@ def visualizar_fluxo_de_caixa(df: pd.DataFrame, save: bool = False, fig_label: s
     plt.show()
 
     return None
+
+def relatorio_mensal(
+    cash_flow_df: pd.DataFrame,
+    formatar: bool = True
+) -> pd.DataFrame:
+    """
+    Gera uma tabela resumida contendo apenas os eventos de pagamento
+    do fluxo de caixa.
+
+    A tabela resultante apresenta:
+    - Data do pagamento;
+    - Juros acumulados no período;
+    - Valor amortizado do principal;
+    - Saldo devedor remanescente após o pagamento.
+
+    Parameters
+    ----------
+    cash_flow_df : pd.DataFrame
+        DataFrame do fluxo de caixa contendo, no mínimo, as colunas:
+        - 'eh_pagamento'
+        - 'data'
+        - 'juros_acumulado_pre'
+        - 'amortizacao'
+        - 'saldo_final'
+
+    formatar : bool, default=True
+        Se True, aplica formatação de data e moeda para exibição.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame resumido com os eventos de pagamento.
+    """
+
+    tabela_pagamentos = (
+        cash_flow_df.loc[cash_flow_df["eh_pagamento"]]
+        [
+            [
+                "data",
+                "juros_acumulado_pre",
+                "amortizacao",
+                "saldo_final"
+            ]
+        ]
+        .rename(
+            columns={
+                "data": "Data do Pagamento",
+                "juros_acumulado_pre": "Juros Acumulados no Período",
+                "amortizacao": "Amortização do Principal",
+                "saldo_final": "Saldo Devedor Remanescente"
+            }
+        )
+        .reset_index(drop=True)
+    )
+
+    if formatar:
+
+        # formata datas
+        tabela_pagamentos["Data do Pagamento"] = (
+            tabela_pagamentos["Data do Pagamento"]
+            .dt.strftime("%d/%m/%Y")
+        )
+
+        # formata valores monetários
+        colunas_monetarias = [
+            "Juros Acumulados no Período",
+            "Amortização do Principal",
+            "Saldo Devedor Remanescente"
+        ]
+
+        for coluna in colunas_monetarias:
+            tabela_pagamentos[coluna] = (
+                tabela_pagamentos[coluna]
+                .map(lambda x: f"R$ {x:,.2f}")
+            )
+
+    return tabela_pagamentos

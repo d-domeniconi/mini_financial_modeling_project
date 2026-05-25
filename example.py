@@ -1,4 +1,4 @@
-from modules.amint import gerar_calendario_financeiro, fluxo_de_caixa, visualizar_fluxo_de_caixa
+from modules.amint import gerar_calendario_financeiro, fluxo_de_caixa, visualizar_fluxo_de_caixa, relatorio_mensal
 import matplotlib.pyplot as plt
 
 # Parâmetros da Simulação:
@@ -29,4 +29,11 @@ fluxo_no_periodo = fluxo_de_caixa(aporte,taxa_cdi,taxa_fixa,parcela_mensal,calen
 print(fluxo_no_periodo.head())
 
 
-# Plotar 
+# Relatório mensal:
+
+relatorio = relatorio_mensal(fluxo_no_periodo)
+print(relatorio.head())
+
+
+# Visualizar fluxo de caixa:
+visualizar_fluxo_de_caixa(fluxo_no_periodo)
